@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\GtMotive.Renting.Common.Infrastructure\GtMotive.Renting.Common.Infrastructure.csproj" />
+	  <ProjectReference Include="..\GtMotive.Renting.Modules.Customers.Application\GtMotive.Renting.Modules.Customers.Application.csproj" />
+	  <ProjectReference Include="..\GtMotive.Renting.Modules.Customers.Presentation\GtMotive.Renting.Modules.Customers.Presentation.csproj" />
+	</ItemGroup>
+</Project>

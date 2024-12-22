@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  gtmotive.renting.api:
+    image: ${DOCKER_REGISTRY-}gtmotiverentingapi
+    container_name: GtMotive.Renting.API
+    build:
+      context: .
+      dockerfile: GtMotive.Renting.API/Dockerfile
+    ports:
+      - 5000:8080
+      - 5001:8081
+
+  gtmotive.renting.database:
+    image: postgres:latest
+    container_name: GtMotive.Renting.Database
+    environment:
+      - POSTGRES_DB=renting
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./.containers/db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    
