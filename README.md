@@ -62,3 +62,6 @@ El sistema está compuesto por los siguientes componentes organizados según los p
 
 ![Diagrama de Arquitectura](assets/ArchitectureDiagram.png)
 
+## Diagrama de Entidades
+
+![Diagrama de Entidades](assets/DER.png)
