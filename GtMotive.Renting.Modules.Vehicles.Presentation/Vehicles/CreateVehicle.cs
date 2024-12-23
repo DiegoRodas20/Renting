@@ -1,4 +1,6 @@
-﻿using GtMotive.Renting.Common.Presentation.Endpoints;
+﻿using GtMotive.Renting.Common.Domain;
+using GtMotive.Renting.Common.Presentation.Endpoints;
+using GtMotive.Renting.Common.Presentation.Results;
 using GtMotive.Renting.Modules.Vehicles.Application.Vehicles.CreateVehicle;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -13,9 +15,9 @@ internal sealed class CreateVehicle : IEndpoint
     {
         app.MapPost("vehicles", async (CreateVehicleCommand request, ISender sender) =>
         {
-            var result = await sender.Send(request);
+            Result<Guid> result = await sender.Send(request);
 
-            return result;
+            return result.Match(Results.Ok, ApiResults.Problem);
 
         }).WithTags(Tags.Vehicles);
     }

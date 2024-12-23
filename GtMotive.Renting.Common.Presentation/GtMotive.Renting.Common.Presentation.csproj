@@ -9,9 +9,9 @@
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
-	
+
 	<ItemGroup>
-		<Folder Include="Results\" />
+	  <ProjectReference Include="..\GtMotive.Renting.Common.Domain\GtMotive.Renting.Common.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

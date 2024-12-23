@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using GtMotive.Renting.Common.Domain;
+using System.Text.Json.Serialization;
 
 namespace GtMotive.Renting.Modules.Vehicles.Domain.Vehicles;
 
@@ -25,12 +26,17 @@ public sealed class Vehicle
     [JsonInclude]
     public DateTime CreatedAt { get; private set; }
 
-    public static Vehicle Create(
+    public static Result<Vehicle> Create(
         Guid categoryId,
         int yearOfManufacture,
         string brand,
         string licensePlate)
     {
+        if (yearOfManufacture > 5)
+        {
+            return Result.Failure<Vehicle>(VehicleErrors.InvalidYearOfManufacture);
+        }
+
         var vehicle = new Vehicle
         {
             Id = Guid.NewGuid(),
