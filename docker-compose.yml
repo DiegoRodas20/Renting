@@ -22,4 +22,10 @@ services:
       - ./.containers/db:/var/lib/postgresql/data
     ports:
       - 5432:5432
-    
+
+  gtmotive.renting.cache:
+    image: redis:latest
+    container_name: GtMotive.Renting.Cache
+    restart: always
+    ports:
+      - '6379:6379'

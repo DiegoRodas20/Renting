@@ -1,16 +1,21 @@
 ﻿using GtMotive.Renting.Modules.Vehicles.Domain.Categories;
+using GtMotive.Renting.Modules.Vehicles.Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace GtMotive.Renting.Modules.Vehicles.Infrastructure.Categories;
 
-internal sealed class CategoryRepository : ICategoryRepository
+internal sealed class CategoryRepository(VehiclesDbContext context) : ICategoryRepository
 {
-    public Task<List<Category>> GetCategories()
+    public async Task<List<Category>> GetCategories()
     {
-        throw new NotImplementedException();
+        var categories = await context.Categories.ToListAsync();
+
+        return categories;
     }
 
-    public Task InsertCategory(Category category)
+    public async Task InsertCategory(Category category)
     {
-        throw new NotImplementedException();
+        await context.Categories.AddAsync(category);
+        await context.SaveChangesAsync();
     }
 }
