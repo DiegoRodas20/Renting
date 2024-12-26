@@ -3,7 +3,9 @@ using GtMotive.Renting.Modules.Vehicles.Domain.Categories;
 using GtMotive.Renting.Modules.Vehicles.Domain.Vehicles;
 using GtMotive.Renting.Modules.Vehicles.Infrastructure.Categories;
 using GtMotive.Renting.Modules.Vehicles.Infrastructure.Database;
+using GtMotive.Renting.Modules.Vehicles.Infrastructure.PublicApi;
 using GtMotive.Renting.Modules.Vehicles.Infrastructure.Vehicles;
+using GtMotive.Renting.Modules.Vehicles.PublicApi;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
@@ -33,5 +35,6 @@ public static class VehiclesModule
 
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<IVehicleRepository, VehicleRepository>();
+        services.AddScoped<IVehiclesApi, VehiclesApi>();
     }
 }

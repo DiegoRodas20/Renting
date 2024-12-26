@@ -12,4 +12,4 @@ public sealed record StartRentalCommand(
 
     DateTime EndDate
 
-) : ICommand<Guid>;
+) : ICommand;

@@ -13,6 +13,13 @@ internal sealed class VehicleRepository(VehiclesDbContext context) : IVehicleRep
         return vehicles;
     }
 
+    public async Task<Vehicle?> GetVehicleById(Guid vehicleId)
+    {
+        var vehicle = await context.Vehicles.FirstOrDefaultAsync(x => x.Id == vehicleId);
+
+        return vehicle;
+    }
+
     public async Task InsertVehicle(Vehicle vehicle)
     {
         await context.Vehicles.AddAsync(vehicle);

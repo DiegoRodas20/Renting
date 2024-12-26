@@ -5,6 +5,7 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
+	  <ProjectReference Include="..\..\GtMotive.Renting.Modules.Vehicles.PublicApi\GtMotive.Renting.Modules.Vehicles.PublicApi.csproj" />
 	  <ProjectReference Include="..\GtMotive.Renting.Common.Infrastructure\GtMotive.Renting.Common.Infrastructure.csproj" />
 	  <ProjectReference Include="..\GtMotive.Renting.Modules.Vehicles.Application\GtMotive.Renting.Modules.Vehicles.Application.csproj" />
 	  <ProjectReference Include="..\GtMotive.Renting.Modules.Vehicles.Presentation\GtMotive.Renting.Modules.Vehicles.Presentation.csproj" />

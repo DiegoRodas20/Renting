@@ -4,5 +4,7 @@ public interface IVehicleRepository
 {
     Task<List<Vehicle>> GetVehicles();
 
+    Task<Vehicle?> GetVehicleById(Guid vehicleId);
+
     Task InsertVehicle(Vehicle vehicle);
 }

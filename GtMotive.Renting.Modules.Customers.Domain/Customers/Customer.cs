@@ -12,6 +12,8 @@ public class Customer
 
     public string PhoneNumber { get; private set; } = string.Empty;
 
+    public int Age { get; private set; }
+
     public CustomerStatus Status { get; private set; }
 
     public DateTime CreatedAt { get; private set; }
@@ -20,7 +22,8 @@ public class Customer
         string firstName,
         string lastName,
         string email,
-        string phoneNumber
+        string phoneNumber,
+        int age
     )
     {
         var customer = new Customer
@@ -30,6 +33,7 @@ public class Customer
             LastName = lastName,
             Email = email,
             PhoneNumber = phoneNumber,
+            Age = age,
             Status = CustomerStatus.Active,
             CreatedAt = DateTime.UtcNow
         };

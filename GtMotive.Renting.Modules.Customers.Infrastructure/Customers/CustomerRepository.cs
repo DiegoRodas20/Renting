@@ -1,16 +1,21 @@
 ﻿using GtMotive.Renting.Modules.Customers.Domain.Customers;
+using GtMotive.Renting.Modules.Customers.Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace GtMotive.Renting.Modules.Customers.Infrastructure.Customers;
 
-internal sealed class CustomerRepository : ICustomerRepository
+internal sealed class CustomerRepository(CustomersDbContext context) : ICustomerRepository
 {
-    public Task<List<Customer>> GetCustomers()
+    public async Task<List<Customer>> GetCustomers()
     {
-        throw new NotImplementedException();
+        var customers = await context.Customers.ToListAsync();
+
+        return customers;
     }
 
-    public Task InsertCustomer(Customer rental)
+    public async Task InsertCustomer(Customer customer)
     {
-        throw new NotImplementedException();
+        await context.Customers.AddAsync(customer);
+        await context.SaveChangesAsync();
     }
 }

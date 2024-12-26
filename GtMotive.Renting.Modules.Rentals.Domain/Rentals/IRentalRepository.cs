@@ -7,4 +7,6 @@ public interface IRentalRepository
     Task StartRental(Rental rental);
 
     Task EndRental(Guid rentalId);
+
+    Task<bool> ValidateCustomerForRental(Guid customerId, DateTime startDate, DateTime endDate);
 }

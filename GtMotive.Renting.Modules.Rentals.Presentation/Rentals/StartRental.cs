@@ -1,4 +1,6 @@
-﻿using GtMotive.Renting.Common.Presentation.Endpoints;
+﻿using GtMotive.Renting.Common.Domain;
+using GtMotive.Renting.Common.Presentation.Endpoints;
+using GtMotive.Renting.Common.Presentation.Results;
 using GtMotive.Renting.Modules.Rentals.Application.Rentals.StartRental;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -13,9 +15,9 @@ internal sealed class StartRental : IEndpoint
     {
         app.MapPost("rentals", async (StartRentalCommand startRentalCommand, ISender sender) =>
         {
-            var result = await sender.Send(startRentalCommand);
+            Result result = await sender.Send(startRentalCommand);
 
-            return result;
+            return result.Match(() => Results.Ok(), ApiResults.Problem);
 
         }).WithTags(Tags.Rentals);
     }

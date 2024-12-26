@@ -1,4 +1,6 @@
-﻿using GtMotive.Renting.Common.Presentation.Endpoints;
+﻿using GtMotive.Renting.Common.Domain;
+using GtMotive.Renting.Common.Presentation.Endpoints;
+using GtMotive.Renting.Common.Presentation.Results;
 using GtMotive.Renting.Modules.Customers.Application.Customers.CreateCustomer;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -13,9 +15,9 @@ internal sealed class CreateCustomer : IEndpoint
     {
         app.MapPost("customers", async (CreateCustomerCommand createCustomerCommand, ISender sender) =>
         {
-            var result = await sender.Send(createCustomerCommand);
+            Result<Guid> result = await sender.Send(createCustomerCommand);
 
-            return result;
+            return result.Match(Results.Ok, ApiResults.Problem);
 
         }).WithTags(Tags.Customers);
     }
