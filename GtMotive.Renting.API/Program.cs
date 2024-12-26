@@ -2,6 +2,7 @@ using GtMotive.Renting.API.Extensions;
 using GtMotive.Renting.Common.Application;
 using GtMotive.Renting.Common.Application.Caching;
 using GtMotive.Renting.Common.Infrastructure.Caching;
+using GtMotive.Renting.Common.Infrastructure.Configuration;
 using GtMotive.Renting.Common.Presentation.Endpoints;
 using GtMotive.Renting.Modules.Customers.Infrastructure;
 using GtMotive.Renting.Modules.Rentals.Infrastructure;
@@ -26,11 +27,20 @@ Assembly[] moduleApplicationAssemblues = [
 
 builder.Services.AddApplication(moduleApplicationAssemblues);
 
-string redisConnectionString = builder.Configuration.GetConnectionString("Cache");
+string redisConnectionString = builder.Configuration.GetConnectionStringOrThrow("Cache");
 
-IConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect(redisConnectionString);
-builder.Services.AddSingleton(connectionMultiplexer);
-builder.Services.AddStackExchangeRedisCache(options => options.ConnectionMultiplexerFactory = () => Task.FromResult(connectionMultiplexer));
+try
+{
+    IConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect(redisConnectionString);
+    builder.Services.AddSingleton(connectionMultiplexer);
+    builder.Services.AddStackExchangeRedisCache(options =>
+        options.ConnectionMultiplexerFactory = () => Task.FromResult(connectionMultiplexer));
+}
+catch (Exception ex)
+{
+
+}
+
 builder.Services.TryAddSingleton<ICacheService, CacheService>();
 
 // Modules

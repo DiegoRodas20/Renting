@@ -24,9 +24,11 @@ public static class CustomersModule
 
     private static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        var connection = configuration.GetConnectionString("Database");
+
         services.AddDbContext<CustomersDbContext>(options =>
             options.UseNpgsql(
-                configuration.GetConnectionString("Database"),
+                connection,
                 npgsqlOptions => npgsqlOptions.MigrationsHistoryTable(
                     HistoryRepository.DefaultTableName,
                     Schemas.Customers)));
