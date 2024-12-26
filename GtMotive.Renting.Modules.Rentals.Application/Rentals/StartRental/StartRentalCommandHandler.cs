@@ -11,20 +11,20 @@ internal sealed class StartRentalCommandHandler(
 
     IVehiclesApi vehiclesApi
 
-) : ICommandHandler<StartRentalCommand>
+) : ICommandHandler<StartRentalCommand, Guid>
 {
-    public async Task<Result> Handle(StartRentalCommand request, CancellationToken cancellationToken)
+    public async Task<Result<Guid>> Handle(StartRentalCommand request, CancellationToken cancellationToken)
     {
         ValidateVehicleStatusResponse? validateStatus = await vehiclesApi.ValidateVehicleStatus(request.VehicleId, cancellationToken);
 
         if (validateStatus is null)
         {
-            return Result.Failure(RentalErrors.NotFoundVehicle(request.VehicleId));
+            return Result.Failure<Guid>(RentalErrors.NotFoundVehicle(request.VehicleId));
         }
 
         if (!validateStatus.IsValid)
         {
-            return Result.Failure(RentalErrors.NotValidVehicleStatus(request.VehicleId));
+            return Result.Failure<Guid>(RentalErrors.NotValidVehicleStatus(request.VehicleId));
         }
 
         bool validateCustomer = await rentalRepository.ValidateCustomerForRental(
@@ -35,7 +35,7 @@ internal sealed class StartRentalCommandHandler(
 
         if (validateCustomer)
         {
-            return Result.Failure(RentalErrors.CustomerHasActiveReservation(request.CustomerId));
+            return Result.Failure<Guid>(RentalErrors.CustomerHasActiveReservation(request.CustomerId));
         }
 
         var rental = Rental.Create(
@@ -47,6 +47,6 @@ internal sealed class StartRentalCommandHandler(
 
         await rentalRepository.StartRental(rental);
 
-        return Result.Success();
+        return rental.Id;
     }
 }

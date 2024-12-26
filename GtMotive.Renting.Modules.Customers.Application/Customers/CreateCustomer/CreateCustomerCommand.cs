@@ -10,8 +10,6 @@ public sealed record CreateCustomerCommand(
 
     string Email,
 
-    string PhoneNumber,
-
-    int Age
+    string PhoneNumber
 
 ) : ICommand<Guid>;

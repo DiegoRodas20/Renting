@@ -16,8 +16,7 @@ internal sealed class CreateCustomerCommandHandler(
             request.FirstName,
             request.LastName,
             request.Email,
-            request.PhoneNumber,
-            request.Age
+            request.PhoneNumber
         );
 
         await customerRepository.InsertCustomer(customer);

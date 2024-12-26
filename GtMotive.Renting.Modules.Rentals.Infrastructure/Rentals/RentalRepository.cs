@@ -34,6 +34,6 @@ internal sealed class RentalRepository(RentalsDbContext context) : IRentalReposi
                      )
         ).ToListAsync();
 
-        return conflictingRentals.Count == 0;
+        return !(conflictingRentals.Count == 0);
     }
 }

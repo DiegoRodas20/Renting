@@ -15,9 +15,9 @@ internal sealed class StartRental : IEndpoint
     {
         app.MapPost("rentals", async (StartRentalCommand startRentalCommand, ISender sender) =>
         {
-            Result result = await sender.Send(startRentalCommand);
+            Result<Guid> result = await sender.Send(startRentalCommand);
 
-            return result.Match(() => Results.Ok(), ApiResults.Problem);
+            return result.Match(Results.Ok, ApiResults.Problem);
 
         }).WithTags(Tags.Rentals);
     }
