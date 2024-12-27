@@ -7,4 +7,6 @@ public interface IVehicleRepository
     Task<Vehicle?> GetVehicleById(Guid vehicleId);
 
     Task InsertVehicle(Vehicle vehicle);
+
+    Task UpdateVehicle(Guid vehicleId, VehicleStatus status);
 }

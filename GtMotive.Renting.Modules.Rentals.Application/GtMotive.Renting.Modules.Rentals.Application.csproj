@@ -9,6 +9,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\GtMotive.Renting.Common.Application\GtMotive.Renting.Common.Application.csproj" />
 	  <ProjectReference Include="..\GtMotive.Renting.Modules.Rentals.Domain\GtMotive.Renting.Modules.Rentals.Domain.csproj" />
+	  <ProjectReference Include="..\GtMotive.Renting.Modules.Rentals.IntegrationEvents\GtMotive.Renting.Modules.Rentals.IntegrationEvents.csproj" />
 	  <ProjectReference Include="..\GtMotive.Renting.Modules.Vehicles.PublicApi\GtMotive.Renting.Modules.Vehicles.PublicApi.csproj" />
 	</ItemGroup>
 

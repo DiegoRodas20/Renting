@@ -3,10 +3,12 @@ using GtMotive.Renting.Common.Application;
 using GtMotive.Renting.Common.Application.Caching;
 using GtMotive.Renting.Common.Infrastructure.Caching;
 using GtMotive.Renting.Common.Infrastructure.Configuration;
+using GtMotive.Renting.Common.Infrastructure.EventBus;
 using GtMotive.Renting.Common.Presentation.Endpoints;
 using GtMotive.Renting.Modules.Customers.Infrastructure;
 using GtMotive.Renting.Modules.Rentals.Infrastructure;
 using GtMotive.Renting.Modules.Vehicles.Infrastructure;
+using MassTransit;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using StackExchange.Redis;
 using System.Reflection;
@@ -36,12 +38,36 @@ try
     builder.Services.AddStackExchangeRedisCache(options =>
         options.ConnectionMultiplexerFactory = () => Task.FromResult(connectionMultiplexer));
 }
-catch (Exception ex)
+catch
 {
-
+    builder.Services.AddDistributedMemoryCache();
 }
 
 builder.Services.TryAddSingleton<ICacheService, CacheService>();
+
+var rabbitMqSettings = new RabbitMqSettings(builder.Configuration.GetConnectionStringOrThrow("Queue"));
+
+builder.Services.AddMassTransit(configure =>
+{
+    //foreach (Action<IRegistrationConfigurator, string> configureConsumers in moduleCon)
+    //{
+    //    configureConsumers(configure);
+    //}
+
+    configure.SetKebabCaseEndpointNameFormatter();
+
+    configure.UsingRabbitMq((context, config) =>
+    {
+        config.Host(new Uri(rabbitMqSettings.Host), h =>
+        {
+            h.Username(rabbitMqSettings.Username);
+            h.Password(rabbitMqSettings.Password);
+        });
+
+        config.ConfigureEndpoints(context);
+    });
+});
+
 
 // Modules
 builder.Services.AddCustomerModule(builder.Configuration);

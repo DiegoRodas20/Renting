@@ -25,4 +25,13 @@ internal sealed class VehicleRepository(VehiclesDbContext context) : IVehicleRep
         await context.Vehicles.AddAsync(vehicle);
         await context.SaveChangesAsync();
     }
+
+    public async Task UpdateVehicle(Guid vehicleId, VehicleStatus status)
+    {
+        var vehicle = await context.Vehicles.FirstOrDefaultAsync(x => x.Id == vehicleId);
+
+        vehicle.Update(status);
+
+        await context.SaveChangesAsync();
+    }
 }

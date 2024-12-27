@@ -11,6 +11,11 @@ internal sealed class RentalRepository(RentalsDbContext context) : IRentalReposi
         return await context.Rentals.ToListAsync();
     }
 
+    public async Task<Rental?> GetRental(Guid rentalId)
+    {
+        return await context.Rentals.FirstOrDefaultAsync(r => r.Id == rentalId);
+    }
+
     public async Task StartRental(Rental rental)
     {
         await context.Rentals.AddAsync(rental);

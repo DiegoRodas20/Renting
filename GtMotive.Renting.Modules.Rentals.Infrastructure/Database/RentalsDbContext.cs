@@ -1,4 +1,5 @@
-﻿using GtMotive.Renting.Modules.Rentals.Domain.Rentals;
+﻿using GtMotive.Renting.Common.Infrastructure.Outbox;
+using GtMotive.Renting.Modules.Rentals.Domain.Rentals;
 using GtMotive.Renting.Modules.Rentals.Domain.Reservations;
 using GtMotive.Renting.Modules.Rentals.Infrastructure.Rentals;
 using GtMotive.Renting.Modules.Rentals.Infrastructure.Reservations;
@@ -16,6 +17,7 @@ public sealed class RentalsDbContext(DbContextOptions<RentalsDbContext> options)
     {
         modelBuilder.HasDefaultSchema(Schemas.Rentals);
 
+        modelBuilder.ApplyConfiguration(new OutboxMessageConfiguration());
         modelBuilder.ApplyConfiguration(new RentalConfiguration());
         modelBuilder.ApplyConfiguration(new ReservationConfiguration());
     }

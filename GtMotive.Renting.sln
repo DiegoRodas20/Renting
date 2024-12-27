@@ -67,7 +67,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aspire", "aspire", "{FCFEEF
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{74BB033F-E60C-4D94-93EA-F64174AFE62B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GtMotive.Renting.Modules.Vehicles.PublicApi", "GtMotive.Renting.Modules.Vehicles.PublicApi\GtMotive.Renting.Modules.Vehicles.PublicApi.csproj", "{928EC72D-8231-4ADC-8F1D-7D81131C6A6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GtMotive.Renting.Modules.Vehicles.PublicApi", "GtMotive.Renting.Modules.Vehicles.PublicApi\GtMotive.Renting.Modules.Vehicles.PublicApi.csproj", "{928EC72D-8231-4ADC-8F1D-7D81131C6A6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GtMotive.Renting.Modules.Rentals.IntegrationEvents", "GtMotive.Renting.Modules.Rentals.IntegrationEvents\GtMotive.Renting.Modules.Rentals.IntegrationEvents.csproj", "{CF4C3AA8-97EE-4308-BD0D-8778BD20AB71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -159,6 +161,10 @@ Global
 		{928EC72D-8231-4ADC-8F1D-7D81131C6A6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{928EC72D-8231-4ADC-8F1D-7D81131C6A6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{928EC72D-8231-4ADC-8F1D-7D81131C6A6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF4C3AA8-97EE-4308-BD0D-8778BD20AB71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF4C3AA8-97EE-4308-BD0D-8778BD20AB71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF4C3AA8-97EE-4308-BD0D-8778BD20AB71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF4C3AA8-97EE-4308-BD0D-8778BD20AB71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -193,6 +199,7 @@ Global
 		{FD71215E-1B04-466E-8607-76EC21165248} = {FCFEEF6F-A659-4AD6-92D5-3A4ACE91EF51}
 		{1EBE3B4D-7FE1-46CB-8200-F0C47978CFCF} = {FCFEEF6F-A659-4AD6-92D5-3A4ACE91EF51}
 		{928EC72D-8231-4ADC-8F1D-7D81131C6A6E} = {90EE7D77-44EA-4BEA-A8EE-E44D1DE3A64C}
+		{CF4C3AA8-97EE-4308-BD0D-8778BD20AB71} = {0F502FDA-A880-4D73-9398-5968FCBBAE16}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B669096-FCA1-4553-8518-A12BFCE1F5A5}

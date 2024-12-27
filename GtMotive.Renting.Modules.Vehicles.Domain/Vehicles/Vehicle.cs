@@ -50,4 +50,9 @@ public sealed class Vehicle
 
         return vehicle;
     }
+
+    public void Update(VehicleStatus status)
+    {
+        Status = status;
+    }
 }

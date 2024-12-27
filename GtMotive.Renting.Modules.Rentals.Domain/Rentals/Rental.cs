@@ -1,6 +1,8 @@
-﻿namespace GtMotive.Renting.Modules.Rentals.Domain.Rentals;
+﻿using GtMotive.Renting.Common.Domain;
 
-public class Rental
+namespace GtMotive.Renting.Modules.Rentals.Domain.Rentals;
+
+public class Rental : Entity
 {
     public Guid Id { get; private set; }
 
@@ -32,6 +34,8 @@ public class Rental
             Status = RentalStatus.Active,
             CreatedAt = DateTime.UtcNow
         };
+
+        rental.Raise(new RentalStartedDomainEvent(rental.Id));
 
         return rental;
     }
