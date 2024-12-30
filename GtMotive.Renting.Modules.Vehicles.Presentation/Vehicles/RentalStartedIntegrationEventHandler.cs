@@ -1,27 +1,34 @@
-﻿using GtMotive.Renting.Common.Application.EventBus;
-using GtMotive.Renting.Common.Domain;
-using GtMotive.Renting.Modules.Rentals.IntegrationEvents;
+﻿using GtMotive.Renting.Modules.Rentals.IntegrationEvents;
 using GtMotive.Renting.Modules.Vehicles.Application.Vehicles.UpdateVehicle;
 using GtMotive.Renting.Modules.Vehicles.Domain.Vehicles;
+using MassTransit;
 using MediatR;
 
 namespace GtMotive.Renting.Modules.Vehicles.Presentation.Vehicles;
 
-internal sealed class RentalStartedIntegrationEventHandler(
+public sealed class RentalStartedIntegrationEventHandler(
 
     ISender sender
 
-) : IntegrationEventHandler<RentalStartedIntegrationEvent>
+) : IConsumer<RentalStartedIntegrationEvent>
 {
-    public override async Task Handle(RentalStartedIntegrationEvent integrationEvent, CancellationToken cancellationToken = default)
+    public async Task Consume(ConsumeContext<RentalStartedIntegrationEvent> context)
     {
         var command = new UpdateVehicleCommand(
-            integrationEvent.VehicleId,
+            context.Message.VehicleId,
             VehicleStatus.Rented
         );
 
-        Result result = await sender.Send(command, cancellationToken);
-
-        return result;
+        await sender.Send(command);
     }
+
+    //public override async Task Handle(RentalStartedIntegrationEvent integrationEvent, CancellationToken cancellationToken = default)
+    //{
+    //    var command = new UpdateVehicleCommand(
+    //        integrationEvent.VehicleId,
+    //        VehicleStatus.Rented
+    //    );
+
+    //    await sender.Send(command, cancellationToken);
+    //}
 }

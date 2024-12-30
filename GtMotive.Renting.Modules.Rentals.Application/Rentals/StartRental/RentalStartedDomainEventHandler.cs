@@ -14,9 +14,9 @@ internal sealed class RentalStartedDomainEventHandler(
 
     IEventBus eventBus
 
-) : DomainEventHandler<RentalStartedDomainEvent>
+) : IDomainEventHandler<RentalStartedDomainEvent>
 {
-    public override async Task Handle(RentalStartedDomainEvent domainEvent, CancellationToken cancellationToken = default)
+    public async Task Handle(RentalStartedDomainEvent domainEvent, CancellationToken cancellationToken = default)
     {
         Result<Rental> result = await sender.Send(new GetRentalQuery(domainEvent.RentalId), cancellationToken);
 

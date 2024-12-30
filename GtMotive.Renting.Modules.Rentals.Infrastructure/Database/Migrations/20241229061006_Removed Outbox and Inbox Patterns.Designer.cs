@@ -3,6 +3,7 @@ using System;
 using GtMotive.Renting.Modules.Rentals.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GtMotive.Renting.Modules.Rentals.Infrastructure.Database.Migrations
 {
     [DbContext(typeof(RentalsDbContext))]
-    partial class RentalsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241229061006_Removed Outbox and Inbox Patterns")]
+    partial class RemovedOutboxandInboxPatterns
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

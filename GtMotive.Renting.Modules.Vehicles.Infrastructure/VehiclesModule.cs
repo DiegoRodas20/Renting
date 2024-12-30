@@ -5,6 +5,7 @@ using GtMotive.Renting.Modules.Vehicles.Infrastructure.Categories;
 using GtMotive.Renting.Modules.Vehicles.Infrastructure.Database;
 using GtMotive.Renting.Modules.Vehicles.Infrastructure.PublicApi;
 using GtMotive.Renting.Modules.Vehicles.Infrastructure.Vehicles;
+using GtMotive.Renting.Modules.Vehicles.Presentation.Vehicles;
 using GtMotive.Renting.Modules.Vehicles.PublicApi;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
@@ -39,8 +40,8 @@ public static class VehiclesModule
         services.AddScoped<IVehiclesApi, VehiclesApi>();
     }
 
-    public static void ConfigureConsumers(IRegistrationConfigurator registrationConfigurator, string instanceId)
+    public static void ConfigureConsumers(IRegistrationConfigurator registrationConfigurator)
     {
-        registrationConfigurator.AddConsumer<>();
+        registrationConfigurator.AddConsumer<RentalStartedIntegrationEventHandler>();
     }
 }

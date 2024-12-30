@@ -5,6 +5,9 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
+	  <PackageReference Include="MassTransit.RabbitMQ" Version="8.3.4" />
+	</ItemGroup>
+	<ItemGroup>
 	  <ProjectReference Include="..\GtMotive.Renting.Common.Presentation\GtMotive.Renting.Common.Presentation.csproj" />
 	  <ProjectReference Include="..\GtMotive.Renting.Modules.Rentals.IntegrationEvents\GtMotive.Renting.Modules.Rentals.IntegrationEvents.csproj" />
 	  <ProjectReference Include="..\GtMotive.Renting.Modules.Vehicles.Application\GtMotive.Renting.Modules.Vehicles.Application.csproj" />

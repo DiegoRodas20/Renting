@@ -1,0 +1,3 @@
+VHOST: /
+QUEUE: rental-started-integration-event-handler
+INDEX: v2
