@@ -14,7 +14,7 @@ public static class InfrastructureConfiguration
     public static IServiceCollection AddInfrastructure(
         this IServiceCollection services,
         Action<IRegistrationConfigurator>[] moduleConfigureConsumers,
-        RabbitMqSettings rabbitMqSettings,
+        string rabbitMqConnectionString,
         string redisConnectionString)
     {
         services.TryAddSingleton<IEventBus, EventBus.EventBus>();
@@ -44,11 +44,7 @@ public static class InfrastructureConfiguration
 
             configure.UsingRabbitMq((context, config) =>
             {
-                config.Host(new Uri(rabbitMqSettings.Host), h =>
-                {
-                    h.Username(rabbitMqSettings.Username);
-                    h.Password(rabbitMqSettings.Password);
-                });
+                config.Host(rabbitMqConnectionString);
 
                 config.ConfigureEndpoints(context);
             });

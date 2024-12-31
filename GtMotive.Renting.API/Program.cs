@@ -26,13 +26,13 @@ Assembly[] moduleApplicationAssemblues = [
 builder.Services.AddApplication(moduleApplicationAssemblues);
 
 string redisConnectionString = builder.Configuration.GetConnectionStringOrThrow("Cache");
-RabbitMqSettings rabbitMqSettings = new(builder.Configuration.GetConnectionStringOrThrow("Queue"));
+string rabbitConnectionString = builder.Configuration.GetConnectionStringOrThrow("Queue");
 
 builder.Services.AddInfrastructure(
     [
         VehiclesModule.ConfigureConsumers
     ],
-    rabbitMqSettings,
+    rabbitConnectionString,
     redisConnectionString
 );
 

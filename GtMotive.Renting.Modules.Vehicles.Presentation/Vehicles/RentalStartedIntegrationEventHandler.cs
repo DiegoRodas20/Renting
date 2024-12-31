@@ -21,14 +21,4 @@ public sealed class RentalStartedIntegrationEventHandler(
 
         await sender.Send(command);
     }
-
-    //public override async Task Handle(RentalStartedIntegrationEvent integrationEvent, CancellationToken cancellationToken = default)
-    //{
-    //    var command = new UpdateVehicleCommand(
-    //        integrationEvent.VehicleId,
-    //        VehicleStatus.Rented
-    //    );
-
-    //    await sender.Send(command, cancellationToken);
-    //}
 }
