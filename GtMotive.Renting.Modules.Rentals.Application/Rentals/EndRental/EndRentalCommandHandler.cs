@@ -12,7 +12,16 @@ internal sealed class EndRentalCommandHandler(
 {
     public async Task<Result<Guid>> Handle(EndRentalCommand request, CancellationToken cancellationToken)
     {
-        await rentalRepository.EndRental(request.RentalId);
+        Rental? rental = await rentalRepository.GetRentalById(request.RentalId);
+
+        if (rental is null)
+        {
+            return Result.Failure<Guid>(RentalErrors.NotFound(request.RentalId));
+        }
+
+        Result result = rental.End();
+
+        await rentalRepository.EndRental(rental);
 
         return request.RentalId;
     }

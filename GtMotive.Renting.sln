@@ -41,14 +41,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GtMotive.Renting.Modules.Ve
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GtMotive.Renting.Modules.Vehicles.Application", "GtMotive.Renting.Modules.Vehicles.Application\GtMotive.Renting.Modules.Vehicles.Application.csproj", "{CB4AA532-5ACE-4741-95CA-7323E2734883}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{52385DD3-504A-495C-AC95-73C8BC99A803}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FunctionalTests", "FunctionalTests", "{BF4ADA5B-671C-46DA-ACFE-4431FD8B4980}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{51ABAB94-6F99-40D6-91AE-6BA3E7357B9A}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InfrastructureTests", "InfrastructureTests", "{CA652E56-457B-41E1-A8DC-DD00EC051750}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{0B811DFC-2995-4B12-BEA5-7A824C8CC308}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GtMotive.Renting.Common.Application", "GtMotive.Renting.Common.Application\GtMotive.Renting.Common.Application.csproj", "{A0C68B95-B8B1-4B9A-9E05-DACC2A74D5A3}"
@@ -69,7 +61,15 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GtMotive.Renting.Modules.Vehicles.PublicApi", "GtMotive.Renting.Modules.Vehicles.PublicApi\GtMotive.Renting.Modules.Vehicles.PublicApi.csproj", "{928EC72D-8231-4ADC-8F1D-7D81131C6A6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GtMotive.Renting.Modules.Rentals.IntegrationEvents", "GtMotive.Renting.Modules.Rentals.IntegrationEvents\GtMotive.Renting.Modules.Rentals.IntegrationEvents.csproj", "{CF4C3AA8-97EE-4308-BD0D-8778BD20AB71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GtMotive.Renting.Modules.Rentals.IntegrationEvents", "GtMotive.Renting.Modules.Rentals.IntegrationEvents\GtMotive.Renting.Modules.Rentals.IntegrationEvents.csproj", "{CF4C3AA8-97EE-4308-BD0D-8778BD20AB71}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B02FCCEC-B449-4A8D-A894-D9EE3DC78548}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GtMotive.Renting.Modules.Rentals.UnitTests", "GtMotive.Renting.Modules.Rentals.UnitTests\GtMotive.Renting.Modules.Rentals.UnitTests.csproj", "{25958E6B-8F93-4BB9-89CF-139FDD72A9E9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GtMotive.Renting.Modules.Rentals.IntegrationTests", "GtMotive.Renting.Modules.Rentals.IntegrationTests\GtMotive.Renting.Modules.Rentals.IntegrationTests.csproj", "{7FA36CF8-FF7C-4EC0-9EB8-BB08D9C3FD7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GtMotive.Renting.Modules.Rentals.ArchitectureTests", "GtMotive.Renting.Modules.Rentals.ArchitectureTests\GtMotive.Renting.Modules.Rentals.ArchitectureTests.csproj", "{15B28C14-DA36-4514-B1EB-EC5ECC2C2563}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -165,6 +165,18 @@ Global
 		{CF4C3AA8-97EE-4308-BD0D-8778BD20AB71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF4C3AA8-97EE-4308-BD0D-8778BD20AB71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF4C3AA8-97EE-4308-BD0D-8778BD20AB71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25958E6B-8F93-4BB9-89CF-139FDD72A9E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25958E6B-8F93-4BB9-89CF-139FDD72A9E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25958E6B-8F93-4BB9-89CF-139FDD72A9E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25958E6B-8F93-4BB9-89CF-139FDD72A9E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FA36CF8-FF7C-4EC0-9EB8-BB08D9C3FD7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FA36CF8-FF7C-4EC0-9EB8-BB08D9C3FD7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FA36CF8-FF7C-4EC0-9EB8-BB08D9C3FD7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FA36CF8-FF7C-4EC0-9EB8-BB08D9C3FD7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15B28C14-DA36-4514-B1EB-EC5ECC2C2563}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B28C14-DA36-4514-B1EB-EC5ECC2C2563}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B28C14-DA36-4514-B1EB-EC5ECC2C2563}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B28C14-DA36-4514-B1EB-EC5ECC2C2563}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -188,9 +200,6 @@ Global
 		{93271561-4DC1-4104-933F-A5054908B804} = {90EE7D77-44EA-4BEA-A8EE-E44D1DE3A64C}
 		{212FE3E7-8F94-43E1-9225-A0C79EFD4938} = {90EE7D77-44EA-4BEA-A8EE-E44D1DE3A64C}
 		{CB4AA532-5ACE-4741-95CA-7323E2734883} = {90EE7D77-44EA-4BEA-A8EE-E44D1DE3A64C}
-		{BF4ADA5B-671C-46DA-ACFE-4431FD8B4980} = {52385DD3-504A-495C-AC95-73C8BC99A803}
-		{51ABAB94-6F99-40D6-91AE-6BA3E7357B9A} = {52385DD3-504A-495C-AC95-73C8BC99A803}
-		{CA652E56-457B-41E1-A8DC-DD00EC051750} = {52385DD3-504A-495C-AC95-73C8BC99A803}
 		{0B811DFC-2995-4B12-BEA5-7A824C8CC308} = {01EFB4DC-DD26-4971-85A1-EF4ACD686CBB}
 		{A0C68B95-B8B1-4B9A-9E05-DACC2A74D5A3} = {0B811DFC-2995-4B12-BEA5-7A824C8CC308}
 		{F0E02245-A8C5-4950-BF6B-55A54C285CC0} = {0B811DFC-2995-4B12-BEA5-7A824C8CC308}
@@ -200,6 +209,10 @@ Global
 		{1EBE3B4D-7FE1-46CB-8200-F0C47978CFCF} = {FCFEEF6F-A659-4AD6-92D5-3A4ACE91EF51}
 		{928EC72D-8231-4ADC-8F1D-7D81131C6A6E} = {90EE7D77-44EA-4BEA-A8EE-E44D1DE3A64C}
 		{CF4C3AA8-97EE-4308-BD0D-8778BD20AB71} = {0F502FDA-A880-4D73-9398-5968FCBBAE16}
+		{B02FCCEC-B449-4A8D-A894-D9EE3DC78548} = {0F502FDA-A880-4D73-9398-5968FCBBAE16}
+		{25958E6B-8F93-4BB9-89CF-139FDD72A9E9} = {B02FCCEC-B449-4A8D-A894-D9EE3DC78548}
+		{7FA36CF8-FF7C-4EC0-9EB8-BB08D9C3FD7A} = {B02FCCEC-B449-4A8D-A894-D9EE3DC78548}
+		{15B28C14-DA36-4514-B1EB-EC5ECC2C2563} = {B02FCCEC-B449-4A8D-A894-D9EE3DC78548}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B669096-FCA1-4553-8518-A12BFCE1F5A5}

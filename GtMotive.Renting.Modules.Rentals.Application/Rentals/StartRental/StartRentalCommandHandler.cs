@@ -38,15 +38,20 @@ internal sealed class StartRentalCommandHandler(
             return Result.Failure<Guid>(RentalErrors.CustomerHasActiveReservation(request.CustomerId));
         }
 
-        var rental = Rental.Create(
+        Result<Rental> rental = Rental.Create(
             request.CustomerId,
             request.VehicleId,
             request.StartDate,
             request.EndDate
         );
 
-        await rentalRepository.StartRental(rental);
+        if (rental.IsFailure)
+        {
+            return Result.Failure<Guid>(rental.Error);
+        }
 
-        return rental.Id;
+        await rentalRepository.StartRental(rental.Value);
+
+        return rental.Value.Id;
     }
 }

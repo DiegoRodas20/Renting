@@ -2,17 +2,17 @@
 using GtMotive.Renting.Common.Domain;
 using GtMotive.Renting.Modules.Rentals.Domain.Rentals;
 
-namespace GtMotive.Renting.Modules.Rentals.Application.Rentals.GetRental;
+namespace GtMotive.Renting.Modules.Rentals.Application.Rentals.GetRentalById;
 
-internal sealed class GetRentalQueryHandler(
+internal sealed class GetRentalByIdQueryHandler(
 
     IRentalRepository rentalRepository
 
-) : IQueryHandler<GetRentalQuery, Rental>
+) : IQueryHandler<GetRentalByIdQuery, Rental>
 {
-    public async Task<Result<Rental>> Handle(GetRentalQuery request, CancellationToken cancellationToken)
+    public async Task<Result<Rental>> Handle(GetRentalByIdQuery request, CancellationToken cancellationToken)
     {
-        Rental? rental = await rentalRepository.GetRental(request.RentalId);
+        Rental? rental = await rentalRepository.GetRentalById(request.RentalId);
 
         if (rental is null)
         {

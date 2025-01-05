@@ -18,12 +18,18 @@ public class Rental : Entity
 
     public DateTime CreatedAt { get; private set; }
 
-    public static Rental Create(
+    public static Result<Rental> Create(
         Guid customerId,
         Guid vehicleId,
         DateTime startDate,
         DateTime endDate)
     {
+
+        if (endDate < startDate)
+        {
+            return Result.Failure<Rental>(RentalErrors.EndDatePrecedesStartDate);
+        }
+
         var rental = new Rental
         {
             Id = Guid.NewGuid(),
@@ -38,5 +44,13 @@ public class Rental : Entity
         rental.Raise(new RentalStartedDomainEvent(rental.Id));
 
         return rental;
+    }
+
+    public Result End()
+    {
+        Status = RentalStatus.Finalized;
+        EndDate = DateTime.UtcNow;
+
+        return Result.Success();
     }
 }

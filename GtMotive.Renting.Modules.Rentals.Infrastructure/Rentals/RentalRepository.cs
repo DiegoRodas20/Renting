@@ -11,7 +11,7 @@ internal sealed class RentalRepository(RentalsDbContext context) : IRentalReposi
         return await context.Rentals.ToListAsync();
     }
 
-    public async Task<Rental?> GetRental(Guid rentalId)
+    public async Task<Rental?> GetRentalById(Guid rentalId)
     {
         return await context.Rentals.FirstOrDefaultAsync(r => r.Id == rentalId);
     }
@@ -22,9 +22,9 @@ internal sealed class RentalRepository(RentalsDbContext context) : IRentalReposi
         await context.SaveChangesAsync();
     }
 
-    public Task EndRental(Guid rentalId)
+    public async Task EndRental(Rental rental)
     {
-        throw new NotImplementedException();
+        await context.SaveChangesAsync();
     }
 
     public async Task<bool> ValidateCustomerForRental(Guid customerId, DateTime startDate, DateTime endDate)
