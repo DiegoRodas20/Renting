@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: gtmotive-renting
+services:  
+  app:
+    language: dotnet
+    project: ./GtMotive.Renting.AppHost/GtMotive.Renting.AppHost.csproj
+    host: containerapp
