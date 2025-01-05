@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
 
-namespace GtMotive.Renting.Modules.Vehicles.Application.Vehicles.CreateVehicle
+namespace GtMotive.Renting.Modules.Vehicles.Application.Vehicles.CreateVehicle;
+
+internal sealed class CreateVehicleCommandValidator : AbstractValidator<CreateVehicleCommand>
 {
-    internal class CreateVehicleCommandValidator
+    public CreateVehicleCommandValidator()
     {
+        RuleFor(c => c.YearOfManufacture).NotEmpty();
+        RuleFor(c => c.Brand).NotEmpty();
+        RuleFor(c => c.LicensePlate).NotEmpty();
     }
 }

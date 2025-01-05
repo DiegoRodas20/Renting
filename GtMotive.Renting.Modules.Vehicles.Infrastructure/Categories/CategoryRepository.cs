@@ -13,6 +13,11 @@ internal sealed class CategoryRepository(VehiclesDbContext context) : ICategoryR
         return categories;
     }
 
+    public async Task<Category?> GetCategoryById(Guid categoryId)
+    {
+        return await context.Categories.FirstOrDefaultAsync(c => c.Id == categoryId);
+    }
+
     public async Task InsertCategory(Category category)
     {
         await context.Categories.AddAsync(category);

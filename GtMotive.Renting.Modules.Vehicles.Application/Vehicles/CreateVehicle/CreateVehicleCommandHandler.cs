@@ -1,15 +1,18 @@
 ﻿using GtMotive.Renting.Common.Application.Caching;
 using GtMotive.Renting.Common.Application.Messaging;
 using GtMotive.Renting.Common.Domain;
+using GtMotive.Renting.Modules.Vehicles.Domain.Categories;
 using GtMotive.Renting.Modules.Vehicles.Domain.Vehicles;
 
 namespace GtMotive.Renting.Modules.Vehicles.Application.Vehicles.CreateVehicle;
 
 internal sealed class CreateVehicleCommandHandler(
 
+    ICacheService cacheService,
+
     IVehicleRepository vehicleRepository,
 
-    ICacheService cacheService
+    ICategoryRepository categoryRepository
 
 ) : ICommandHandler<CreateVehicleCommand, Guid>
 {
@@ -17,6 +20,13 @@ internal sealed class CreateVehicleCommandHandler(
 
     public async Task<Result<Guid>> Handle(CreateVehicleCommand request, CancellationToken cancellationToken)
     {
+        Category? category = await categoryRepository.GetCategoryById(request.CategoryId);
+
+        if (category is null)
+        {
+            return Result.Failure<Guid>(VehicleErrors.NotFoundCategory);
+        }
+
         Result<Vehicle> vehicle = Vehicle.Create(
             request.CategoryId,
             request.YearOfManufacture,
