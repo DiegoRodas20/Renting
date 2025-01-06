@@ -4,7 +4,7 @@ var postgres = builder.AddPostgres("Database")
     .WithDataVolume()
     .WithPgAdmin();
 
-var redis = builder.AddRedis("cache");
+var redis = builder.AddRedis("Cache");
 
 var rabbitMq = builder.AddRabbitMQ("Queue")
     .WithManagementPlugin();

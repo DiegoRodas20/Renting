@@ -17,6 +17,7 @@ internal sealed class CreateReservation : IEndpoint
 
             return result;
 
-        }).WithTags(Tags.Reservations);
+        }).WithTags(Tags.Reservations)
+        .ExcludeFromDescription();
     }
 }

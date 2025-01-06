@@ -1,4 +1,6 @@
-﻿using GtMotive.Renting.Common.Presentation.Endpoints;
+﻿using GtMotive.Renting.Common.Domain;
+using GtMotive.Renting.Common.Presentation.Endpoints;
+using GtMotive.Renting.Common.Presentation.Results;
 using GtMotive.Renting.Modules.Rentals.Application.Rentals.EndRental;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -13,9 +15,9 @@ internal sealed class EndRental : IEndpoint
     {
         app.MapPut("rentals/{id}/end", async (Guid id, ISender sender) =>
         {
-            var result = await sender.Send(new EndRentalCommand(id));
+            Result<Guid> result = await sender.Send(new EndRentalCommand(id));
 
-            return result;
+            return result.Match(Results.Ok, ApiResults.Problem);
 
         }).WithTags(Tags.Rentals);
     }

@@ -1,5 +1,8 @@
-﻿using GtMotive.Renting.Common.Presentation.Endpoints;
+﻿using GtMotive.Renting.Common.Domain;
+using GtMotive.Renting.Common.Presentation.Endpoints;
+using GtMotive.Renting.Common.Presentation.Results;
 using GtMotive.Renting.Modules.Vehicles.Application.Categories.GetCategories;
+using GtMotive.Renting.Modules.Vehicles.Domain.Categories;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -13,9 +16,9 @@ internal sealed class GetCategories : IEndpoint
     {
         app.MapGet("categories", async (ISender sender) =>
         {
-            var result = await sender.Send(new GetCategoriesQuery());
+            Result<IReadOnlyCollection<Category>> result = await sender.Send(new GetCategoriesQuery());
 
-            return result;
+            return result.Match(Results.Ok, ApiResults.Problem);
 
         }).WithTags(Tags.Categories);
     }

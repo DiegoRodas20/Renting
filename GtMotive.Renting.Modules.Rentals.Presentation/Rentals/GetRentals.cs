@@ -1,4 +1,5 @@
 ﻿using GtMotive.Renting.Common.Presentation.Endpoints;
+using GtMotive.Renting.Common.Presentation.Results;
 using GtMotive.Renting.Modules.Rentals.Application.Rentals.GetRentals;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -15,7 +16,7 @@ internal sealed class GetRentals : IEndpoint
         {
             var result = await sender.Send(new GetRentalsQuery());
 
-            return result;
+            return result.Match(Results.Ok, ApiResults.Problem);
 
         }).WithTags(Tags.Rentals);
     }

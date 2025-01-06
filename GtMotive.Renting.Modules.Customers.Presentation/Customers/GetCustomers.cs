@@ -1,4 +1,5 @@
 ﻿using GtMotive.Renting.Common.Presentation.Endpoints;
+using GtMotive.Renting.Common.Presentation.Results;
 using GtMotive.Renting.Modules.Customers.Application.Customers.GetCustomers;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -15,7 +16,7 @@ internal sealed class GetCustomers : IEndpoint
         {
             var result = await sender.Send(new GetCustomersQuery());
 
-            return result;
+            return result.Match(Results.Ok, ApiResults.Problem);
 
         }).WithTags(Tags.Customers);
     }

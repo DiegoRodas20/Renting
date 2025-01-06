@@ -17,6 +17,7 @@ internal sealed class GetActivities : IEndpoint
 
             return result;
 
-        }).WithTags(Tags.Activities);
+        }).WithTags(Tags.Activities)
+        .ExcludeFromDescription();
     }
 }

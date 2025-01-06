@@ -32,7 +32,7 @@ public sealed class Vehicle
         string brand,
         string licensePlate)
     {
-        if (yearOfManufacture > 5)
+        if (yearOfManufacture < DateTime.UtcNow.Year - 5)
         {
             return Result.Failure<Vehicle>(VehicleErrors.InvalidYearOfManufacture);
         }

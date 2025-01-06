@@ -1,67 +1,89 @@
-# GtMotive.Renting
+ï»¿# ğŸš— **GtMotive.Renting**
 
-## Descripción del Proyecto
-GtMotive.Renting es un sistema modular y escalable diseñado para gestionar de manera eficiente el proceso de alquiler de vehículos. Este sistema utiliza una arquitectura modular basada en los principios de **Clean Architecture** para garantizar la separación de responsabilidades, alta mantenibilidad y escalabilidad.
+## ğŸ“– **DescripciÃ³n del Proyecto**
+**GtMotive.Renting** es un sistema diseÃ±ado para gestionar de manera eficiente el proceso de alquiler de vehÃ­culos. Basado en una arquitectura **MonolÃ­tica Modular**, combina los principios de **Clean Architecture** con una estructura modular que asegura:
+- SeparaciÃ³n clara de responsabilidades.
+- Alta mantenibilidad.
+- Escalabilidad a futuro.
 
-El proyecto está compuesto por tres módulos principales:
-- **Vehicles**: Gestiona la flota de vehículos y sus categorías.
-- **Rentals**: Administra las reservas y los alquileres de los vehículos.
-- **Customers**: Maneja la información y las actividades de los clientes.
-
-Cada módulo está diseñado para ser desacoplado y organizado en capas según los principios de Clean Architecture, asegurando independencia y flexibilidad en su desarrollo.
-
----
-
-## Arquitectura
-El sistema está construido utilizando los principios de **Clean Architecture**, organizando el código en capas para maximizar la independencia de los módulos y reducir el acoplamiento entre ellos.
-
-### Tecnologías Utilizadas
-- **Framework**: .NET Core
-- **Base de Datos**: PostgreSQL
-- **Cache Distribuida**: Redis
-- **Mensajería**: RabbitMQ (para soporte de patrones de integración interna si es necesario)
-- **Contenedores**: Docker
-
-### Diagrama de Arquitectura
-El sistema está compuesto por los siguientes componentes organizados según los principios de Clean Architecture:
-1. **Vehicles**: Módulo para gestionar la flota de vehículos y sus categorías.
-2. **Rentals**: Módulo para administrar las reservas y alquileres.
-3. **Customers**: Módulo para manejar la información de los clientes y su historial.
-4. **Distributed Cache**: Redis para acelerar el acceso a datos frecuentemente solicitados.
-5. **Message Broker**: RabbitMQ para la comunicación eventual entre procesos internos.
+### ğŸ”‘ **MÃ³dulos Principales**
+El sistema estÃ¡ organizado en mÃ³dulos independientes que facilitan su desarrollo, prueba y despliegue:
+- **Vehicles**: Gestiona la flota de vehÃ­culos y sus categorÃ­as.
+- **Rentals**: Gestiona los alquileres de los vehÃ­culos.
+- **Customers**: Gestiona la informaciÃ³n de los clientes.
 
 ---
 
-## Funcionalidades
+## ğŸš€ **Opciones para Iniciar el Proyecto**
 
-### Módulo: Vehicles
-- **Crear Vehículo**: Registro de nuevos vehículos en la flota.
-- **Consultar Vehículos**: Listado de vehículos disponibles para alquiler.
-- **Gestionar Categorías**: Creación y consulta de categorías de vehículos.
-
-### Módulo: Rentals
-- **Crear Reserva**: Permite a los clientes reservar un vehículo disponible.
-- **Iniciar Alquiler**: Inicia el proceso de alquiler de un vehículo.
-- **Finalizar Alquiler**: Registra la devolución del vehículo y cierra el alquiler.
-
-### Módulo: Customers
-- **Registrar Cliente**: Creación de perfiles de clientes.
-- **Consultar Clientes**: Obtener información de los clientes registrados.
-- **Registrar Actividad**: Historial de interacciones y actividades de los clientes.
+- **âš™ï¸ Docker Compose**: Configura y orquesta los servicios necesarios (base de datos, cachÃ© y mensajerÃ­a) en un entorno integrado. Para ello, selecciona **docker-compose** como el proyecto de inicio en tu entorno de desarrollo.
+- **ğŸŒŸ .NET Aspire**: Un conjunto de herramientas, plantillas y paquetes para crear aplicaciones observables y listas para producciÃ³n. Selecciona **GtMotive.Renting.AppHost** como el proyecto de inicio.
 
 ---
 
-## Reglas de Negocio
-1. Un vehículo no puede ser alquilado si su antigüedad supera los 5 años desde su fecha de fabricación.
-2. Solo los vehículos con estado `disponible` pueden ser reservados o alquilados.
-3. Los clientes deben estar en estado `activo` para realizar reservas o alquileres.
+## ğŸ› ï¸ **Arquitectura**
+GtMotive.Renting adopta una arquitectura **Monolito Modular**, que agrupa toda la funcionalidad en un Ãºnico despliegue, pero con una organizaciÃ³n interna que permite trabajar con mÃ³dulos desacoplados. Esto asegura:
+- **SeparaciÃ³n de responsabilidades**: Cada mÃ³dulo tiene sus propias reglas y lÃ³gica, reduciendo el impacto de los cambios.
+- **Escalabilidad interna**: FÃ¡cil integraciÃ³n de nuevos mÃ³dulos sin afectar a los existentes.
+- **Flexibilidad y mantenibilidad**: Siguiendo los principios de **Clean Architecture**, cada mÃ³dulo estÃ¡ organizado en capas bien definidas.
 
 ---
 
-## Arquitectura del Sistema
+## ğŸ§° **TecnologÃ­as Utilizadas**
+El proyecto utiliza un conjunto robusto de tecnologÃ­as para garantizar su desempeÃ±o y escalabilidad:
+
+- ğŸ–¥ï¸ **Framework**: .NET Core 8  
+- ğŸ—„ï¸ **Base de Datos**: PostgreSQL  
+- âš¡ **Cache Distribuida**: Redis  
+- ğŸ“© **MensajerÃ­a**: RabbitMQ  
+- ğŸ“š **LibrerÃ­as**: MediatR, FluentValidation, EntityFramework, MassTransit.
+- ğŸ§© **Patrones**: CQRS, DDD, Mediador, SOLID.  
+- ğŸ› ï¸ **OrquestaciÃ³n**: Docker Compose y .NET Aspire  
+
+---
+
+## âš¡ **Funcionalidades**
+
+### ğŸš— **MÃ³dulo: Vehicles**
+- **Crear VehÃ­culo**: Registro de nuevos vehÃ­culos en la flota.
+- **Obtener VehÃ­culos**: Obtener vehÃ­culos de la flota.
+- **Crear CategorÃ­a**: Registro de nuevas categorÃ­as de vehÃ­culos.
+- **Obtener CategorÃ­as**: Obtener categorÃ­as de vehÃ­culos.
+
+### ğŸ“… **MÃ³dulo: Rentals**
+- **Iniciar Alquiler**: Inicia el proceso de alquiler de un vehÃ­culo.
+- **Finalizar Alquiler**: Registra la devoluciÃ³n del vehÃ­culo y cierra el alquiler.
+- **Obtener Alquileres**: Obtener listado de alquileres.
+
+### ğŸ‘¤ **MÃ³dulo: Customers**
+- **Registrar Cliente**: CreaciÃ³n de perfiles de clientes.
+- **Consultar Clientes**: Obtener informaciÃ³n de los clientes registrados.
+
+---
+
+## ğŸ“ **Reglas de Negocio**
+1. Un vehÃ­culo no puede ser alquilado si su antigÃ¼edad supera los 5 aÃ±os desde su fecha de fabricaciÃ³n.
+2. Un mismo cliente no puede alquilar mÃ¡s de 1 vehÃ­culo al mismo tiempo.
+3. Solo los vehÃ­culos con estado `disponible` pueden ser reservados o alquilados.
+
+---
+
+## ğŸ“ **Arquitectura del Sistema**
 
 ![Diagrama de Arquitectura](assets/ArchitectureDiagram.png)
 
-## Diagrama de Entidades
+---
 
+## ğŸ—‚ï¸ **Diagrama de Entidades**
 ![Diagrama de Entidades](assets/DER.png)
+
+---
+
+## âœ… **Tests**
+El proyecto incluye un enfoque robusto de pruebas para garantizar su calidad y estabilidad:
+
+- ğŸ” **Tests Unitarios**: Validan la lÃ³gica en componentes aislados.
+- ğŸŒ **Tests de IntegraciÃ³n**: Verifican la interacciÃ³n entre mÃ³dulos y servicios.
+- ğŸ§± **Tests de Arquitectura**: Garantizan que el proyecto sigue los principios establecidos.
+
+---
