@@ -1,8 +1,8 @@
 using GtMotive.Renting.API.Extensions;
+using GtMotive.Renting.API.Middlewares;
 using GtMotive.Renting.Common.Application;
 using GtMotive.Renting.Common.Infrastructure;
 using GtMotive.Renting.Common.Infrastructure.Configuration;
-using GtMotive.Renting.Common.Infrastructure.EventBus;
 using GtMotive.Renting.Common.Presentation.Endpoints;
 using GtMotive.Renting.Modules.Customers.Infrastructure;
 using GtMotive.Renting.Modules.Rentals.Infrastructure;
@@ -13,7 +13,9 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
-// Add services to the container.
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -53,7 +55,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-//app.UseAuthorization();
+
+app.UseExceptionHandler();
+
 app.MapEndpoints();
 
 app.Run();
