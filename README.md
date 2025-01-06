@@ -80,7 +80,7 @@ El proyecto utiliza un conjunto robusto de tecnologías para garantizar su desem
 ---
 
 ## ✅ **Tests**
-El proyecto incluye un enfoque robusto de pruebas para garantizar su calidad y estabilidad:
+El proyecto incluye pruebas enfocadas en el modulo de **Rentals** para garantizar su calidad y estabilidad:
 
 - 🔍 **Tests Unitarios**: Validan la lógica en componentes aislados.
 - 🌐 **Tests de Integración**: Verifican la interacción entre módulos y servicios.
