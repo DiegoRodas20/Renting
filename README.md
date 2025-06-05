@@ -1,4 +1,4 @@
-﻿# 🚗 **GtMotive.Renting**
+﻿# 🚗 **Renting**
 
 ## 📖 **Descripción del Proyecto**
 **GtMotive.Renting** es un sistema diseñado para gestionar de manera eficiente el proceso de alquiler de vehículos. Basado en una arquitectura **Monolítica Modular**, combina los principios de **Clean Architecture** con una estructura modular que asegura:
